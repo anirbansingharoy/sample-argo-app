@@ -18,3 +18,21 @@ spec:
         name: sample-node-app
         ports:
         - containerPort: 8080
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: linter-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+        - name: curl
+          image: curlimages/curl
+          command: [ "/usr/bin/curl", "google.com" ]
+      restartPolicy: Never
+  backoffLimit: 0
