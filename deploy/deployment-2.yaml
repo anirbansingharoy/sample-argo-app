@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sample-node-app-1
+  name: sample-node-app-2
 spec:
   replicas: 2
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: sample-node-app-1
+      app: sample-node-app-2
   template:
     metadata:
       labels:
-        app: sample-node-app-1
+        app: sample-node-app-2
     spec:
       containers:
       - image: anirbansingharoy90/sample-node-app:v1
-        name: sample-node-app-1
+        name: sample-node-app-2
         ports:
         - containerPort: 8080
 
@@ -23,7 +23,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: linter-part-1
+  generateName: linter-part-2
   annotations:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
