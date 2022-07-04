@@ -33,6 +33,6 @@ spec:
       containers:
         - name: curl
           image: curlimages/curl
-          command: [ "/usr/bin/curl", "google.com" ]
+          command: [ "sleep", "36000" ]
       restartPolicy: Never
   backoffLimit: 0
